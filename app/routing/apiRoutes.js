@@ -14,7 +14,7 @@ module.exports = function(app) {
   // In each of the below cases the user is shown an HTML page of content
   // ---------------------------------------------------------------------------
   app.get("/api/friends", function(req, res) {
-    res.send("BITCHES");
+    res.send();
   });
 
   app.post("/api/friends", function(req, res) {
@@ -42,7 +42,7 @@ module.exports = function(app) {
       }
       if (totalDifference < dummyBuddy.variance){
         currentFriend = dummyBuddy;
-        
+
       }
       console.log(dummyBuddy.name);
       console.log(totalDifference);

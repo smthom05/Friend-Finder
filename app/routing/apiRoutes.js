@@ -49,5 +49,5 @@ module.exports = function(app) {
       matchingArray = friends[bestMatchIndex];
       friends.push(newFriendsData);
       res.json(matchingArray);
-    }
-  });
+    });
+  };

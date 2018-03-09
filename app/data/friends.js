@@ -13,8 +13,7 @@ var friendsArray = [{
     1,
     2,
     3,
-    4,
-    5
+    4
   ]},
   {
     "name": "Spongbob",
@@ -30,7 +29,6 @@ var friendsArray = [{
       2,
       2,
       5,
-      5
     ]},
     {
     "name": "Dumbledore",
@@ -45,8 +43,7 @@ var friendsArray = [{
       5,
       5,
       5,
-      4,
-      2
+      4
     ]},
     {
     "name": "Ludacris",
@@ -62,11 +59,10 @@ var friendsArray = [{
       3,
       4,
       4,
-      2
     ]},
     {
     "name": "Dennis Rodman",
-    "photo": "https://dencodingbootcampnov.slack.com/files/U7TJLDXPT/F9FSRHH7V/image.png",
+    "photo": "https://www.gannett-cdn.com/-mm-/c8ecf5831bcab7f8db8a2177985932e55b051a7e/c=183-0-1671-1984&r=537&c=0-0-534-712/local/-/media/2017/04/07/USATODAY/USATODAY/636271516389134151-AP-C14-RODMAN-15.jpg",
     "scores": [
       3,
       2,
@@ -77,8 +73,7 @@ var friendsArray = [{
       5,
       2,
       1,
-      1,
-      2
+      1
     ]}
   ];
 

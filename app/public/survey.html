@@ -30,7 +30,7 @@
     <h3>
       <strong>Question 1</strong>
     </h3>
-    <h4>Do you prefer dogs over cats?</h4>
+    <h4>You prefer dogs over cats?</h4>
     <select class="chosen-select" id="q1">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -54,7 +54,7 @@
     <h3>
       <strong>Question 3</strong>
     </h3>
-    <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+    <h4>You consider Nascar a sport?</h4>
     <select class="chosen-select" id="q3">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -66,7 +66,7 @@
     <h3>
       <strong>Question 4</strong>
     </h3>
-    <h4>You rarely do something just out of sheer curiosity.</h4>
+    <h4>You prefer baths over showers?</h4>
     <select class="chosen-select" id="q4">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -78,7 +78,7 @@
     <h3>
       <strong>Question 5</strong>
     </h3>
-    <h4>People can rarely upset you.</h4>
+    <h4>You don't like sushi?</h4>
     <select class="chosen-select" id="q5">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -90,7 +90,7 @@
     <h3>
       <strong>Question 6</strong>
     </h3>
-    <h4>It is often difficult for you to relate to other people’s feelings.</h4>
+    <h4>You sometimes take up two parking spots when parking?</h4>
     <select class="chosen-select" id="q6">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -102,7 +102,7 @@
     <h3>
       <strong>Question 7</strong>
     </h3>
-    <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+    <h4>You believe Star Wars Episode I was the best Star Wars film?</h4>
     <select class="chosen-select" id="q7">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -114,7 +114,7 @@
     <h3>
       <strong>Question 8</strong>
     </h3>
-    <h4>You rarely get carried away by fantasies and ideas.</h4>
+    <h4>You prefer HGTV over ESPN?</h4>
     <select class="chosen-select" id="q8">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -126,7 +126,7 @@
     <h3>
       <strong>Question 9</strong>
     </h3>
-    <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+    <h4>You prefer Backstreet Boys over N'SYNC?</h4>
     <select class="chosen-select" id="q9">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -138,7 +138,7 @@
     <h3>
       <strong>Question 10</strong>
     </h3>
-    <h4>You feel more energetic after spending time with a group of people.</h4>
+    <h4>You like the TV show Friends more than Seinfeld?</h4>
     <select class="chosen-select" id="q10">
       <option value="">Select an Option</option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -178,5 +178,47 @@
       </div>
     </div>
   </div>
+
+
+
+
+  <script>
+    // Grab the URL of the website
+    var currentURL = window.location.origin;
+    // Capture the form inputs
+    $("#submit").on("click", function() {
+      //event.preventDefault();
+      if (($('#name').val().trim() !== "") && ($('#photo').val().trim() !== "")) {
+        // Create an object for the user's data
+        var userData = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+        }
+        // AJAX post the data to the friends API.
+        $.post(currentURL + "/api/friends", userData, function(data) {
+          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          $("#match-name").text(data.name);
+          $('#match-img').attr("src", data.photo);
+          // Show the modal with the best match
+          $("#results-modal").modal('toggle');
+          // clear the input fields in the form
+          $("#name").val("");
+          $("#photo").val("");
+        });
+      } else {
+        $(".modal-title").text("Missing required information");
+        $(".modal-body").html("<h3>Please complete the form before submitting</h3>");
+        $("#results-modal").modal('toggle');
+      }
+      return false;
+    });
+    // modal logic
+    $('#closeModal').click(function() {
+      $.get('/', function(req, res) {
+        location.replace(res);
+      })
+    });
+  </script>
 </body>
 </html

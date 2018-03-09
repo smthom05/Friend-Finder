@@ -9,44 +9,45 @@ var friends = require("../data/friends.js");
 // ROUTING
 // ===============================================================================
 module.exports = function(app) {
-  // HTML GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases the user is shown an HTML page of content
-  // ---------------------------------------------------------------------------
   app.get("/api/friends", function(req, res) {
-    res.send();
+    res.json(friends);
   });
 
   app.post("/api/friends", function(req, res) {
-    const newFriend = req.body;
-    const newScores = req.body.scores;
-    let totalDifference;
-    res.json(newFriend);
-    // console.log(friends);
+      var newFriendsData = req.body;
+      var totalDifference;
+      var matchingArray = {};
 
-    let dummyBuddy = {
-      "name": "",
-      "photo": "",
-      "variance": 100
-    };
-
-    for (var i = 0; i < friends.length; i++) {
-        let currentFriend = friends[i];
+      for (var i = 0; i < newFriendsData.scores.length; i++) {
+        if (newFriendsData.scores[i] === "1 (Strongly Disagree)") {
+          newFriendsData.scores[i] = 1;
+        } else if (newFriendsData.scores[i] === "5 (Strongly Agree)") {
+          newFriendsData.scores[i] = 5;
+        } else {
+          newFriendsData.scores[i] = parseInt(newFriendsData.scores[i]);
+        }
+      };
+      var bestMatchIndex = 0;
+      var bestMatchDifference = 40;
+      for (var i = 0; i < friends.length; i++) {
+        var currentFriend = friends[i];
         totalDifference = 0;
-      console.log(currentFriend);
-
-      for (var z = 0; z < currentFriend.scores.length; z++) {
-        let currentFriendScore = parseInt(currentFriend.scores[z]);
-        let newFriendScore = parseInt(newScores[z]);
-        totalDifference += Math.abs(currentFriendScore - newFriendScore);
+        console.log(currentFriend);
+        for (var z = 0; z < currentFriend.scores.length; z++) {
+          var currentFriendScore = parseInt(currentFriend.scores[z]);
+          var newFriendScore = parseInt(newFriendsData.scores[z]);
+          console.log("current friend in loop:" + currentFriendScore);
+          console.log("added user score: " + newFriendScore);
+          totalDifference += Math.abs(currentFriendScore - newFriendScore);
+        };
+        console.log(totalDifference);
+        if (totalDifference < bestMatchDifference) {
+          bestMatchIndex = i;
+          bestMatchDifference = totalDifference;
+        };
       }
-      if (totalDifference < dummyBuddy.variance){
-        currentFriend = dummyBuddy;
-
-      }
-      console.log(dummyBuddy.name);
-      console.log(totalDifference);
+      matchingArray = friends[bestMatchIndex];
+      friends.push(newFriendsData);
+      res.json(matchingArray);
     }
-    friends.push(newFriend);
   });
-};

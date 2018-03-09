@@ -1,23 +1,23 @@
 var path = require("path");
 
 var friendsArray = [{
-  "name": "Maria",
-  "photo": "https://cdn.pixabay.com/photo/2017/11/05/18/11/dogs-2921382_1280.jpg",
+  "name": "Morty Sanchez",
+  "photo": "http://i0.kym-cdn.com/photos/images/original/000/692/145/49c.png",
   "scores": [
     5,
     4,
     3,
     2,
     1,
-    3,
     1,
     2,
     3,
-    4
+    4,
+    5
   ]},
   {
-    "name": "Spongbob",
-    "photo": "https://cdn.pixabay.com/photo/2013/11/28/11/29/dog-220191_1280.jpg",
+    "name": "Kool Aid Man",
+    "photo": "http://78.media.tumblr.com/tumblr_ljkcgo8ejM1qc9w3l.jpg",
     "scores": [
       2,
       3,
@@ -32,7 +32,7 @@ var friendsArray = [{
     ]},
     {
     "name": "Dumbledore",
-    "photo": " https://cdn.pixabay.com/photo/2014/06/09/12/29/otter-365370_1280.jpg",
+    "photo": " https://vignette.wikia.nocookie.net/harrypotter/images/0/04/Albus_Dumbledore_%28HBP_promo%29_1.jpg/revision/latest/scale-to-width-down/165?cb=20090817194206",
     "scores": [
       5,
       3,
@@ -47,18 +47,18 @@ var friendsArray = [{
     ]},
     {
     "name": "Ludacris",
-    "photo": "https://cdn.pixabay.com/photo/2017/10/09/02/17/dog-2832245_1280.png",
+    "photo": "http://s3.amazonaws.com/factmag-images/wp-content/uploads/2015/04/03230555/ludacris-4.15.2015-616x440.jpg",
     "scores": [
-      2,
-      3,
-      3,
-      2,
-      3,
-      2,
-      2,
-      3,
+      5,
       4,
-      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      5,
+      5,
+      5,
     ]},
     {
     "name": "Dennis Rodman",
